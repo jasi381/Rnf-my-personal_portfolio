@@ -334,84 +334,293 @@
             color: var(--md-sys-color-on-surface-variant);
         }
 
-        /* Timeline */
+        /* Development Journey with Simple Chart */
         .timeline-section {
             background: var(--md-sys-color-background);
         }
 
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(180deg, var(--md-sys-color-primary) 0%, var(--md-sys-color-tertiary) 100%);
-            transform: translateX(-50%);
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-        }
-
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-right: 40px;
-            text-align: right;
-        }
-
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 40px;
-        }
-
-        .timeline-content {
-            flex: 1;
+        .development-progress {
             background: var(--md-sys-color-surface);
-            padding: 20px;
-            border-radius: 16px;
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 32px;
             box-shadow: var(--md-sys-elevation-level2);
             border: 1px solid var(--md-sys-color-outline-variant);
         }
 
-        .timeline-date {
-            color: var(--md-sys-color-primary);
-            font-weight: 600;
-            margin-bottom: 8px;
+        .progress-header {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            text-align: center;
         }
 
-        .timeline-title {
+        .total-commits {
+            order: 1;
+        }
+
+        .commit-number {
+            color: var(--md-sys-color-primary);
+            font-weight: 700;
+            display: block;
+            font-size: 3rem;
+        }
+
+        .commit-label {
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        .progress-visual {
+            order: 2;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .simple-chart {
+            background: var(--md-sys-color-surface);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--md-sys-color-outline-variant);
+            box-shadow: var(--md-sys-elevation-level2);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .chart-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .chart-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--md-sys-color-on-surface);
+            margin-bottom: 4px;
+        }
+
+        .chart-subtitle {
+            font-size: 0.9rem;
+            color: var(--md-sys-color-on-surface-variant);
+            margin: 0;
+        }
+
+        .chart-container {
+            position: relative;
+        }
+
+        .chart-bars {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 200px;
+            padding: 0 16px;
+            border-bottom: 2px solid var(--md-sys-color-outline-variant);
+            border-left: 2px solid var(--md-sys-color-outline-variant);
+        }
+
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            max-width: 60px;
+        }
+
+        .bar {
+            width: 40px;
+            background: linear-gradient(180deg, #6750A4, #8B5CF6);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 8px;
+            min-height: 40px;
+            animation: growBar 1.5s ease-out;
+        }
+
+        @keyframes growBar {
+            from {
+                height: 0%;
+                transform: scaleY(0);
+            }
+            to {
+                transform: scaleY(1);
+            }
+        }
+
+        .bar:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(103, 80, 164, 0.3);
+        }
+
+        .peak .bar {
+            background: linear-gradient(180deg, #DC2626, #F97316);
+            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .bar-value {
+            color: white;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .peak-badge {
+            background: #FEF3C7;
+            color: #92400E;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.6rem;
+            font-weight: 700;
+            margin-top: 4px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-4px);
+            }
+            60% {
+                transform: translateY(-2px);
+            }
+        }
+
+        .bar-label {
+            margin-top: 8px;
+            font-weight: 600;
+            color: var(--md-sys-color-on-surface);
+            font-size: 0.9rem;
+        }
+
+        .chart-axis {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            padding-left: 16px;
+        }
+
+        .axis-label {
+            font-size: 0.75rem;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        /* Monthly Breakdown Cards */
+        .monthly-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .month-card {
+            background: var(--md-sys-color-surface);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--md-sys-elevation-level2);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .month-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--md-sys-elevation-level4);
+        }
+
+        .month-card.peak-month {
+            border: 2px solid var(--md-sys-color-primary);
+            background: linear-gradient(145deg, var(--md-sys-color-surface) 0%, var(--md-sys-color-primary-container) 100%);
+        }
+
+        .month-card.peak-month::before {
+            content: '⚡';
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 20px;
+        }
+
+        .month-header {
+            padding: 20px 20px 16px 20px;
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+            position: relative;
+        }
+
+        .month-name {
             color: var(--md-sys-color-on-surface);
             margin-bottom: 8px;
         }
 
-        .timeline-description {
-            color: var(--md-sys-color-on-surface-variant);
-            margin-bottom: 8px;
-        }
-
-        .timeline-stats {
-            color: var(--md-sys-color-outline);
+        .commit-badge {
+            background: var(--md-sys-color-secondary-container);
+            color: var(--md-sys-color-on-secondary-container);
+            padding: 4px 12px;
+            border-radius: 12px;
             font-weight: 500;
+            display: inline-block;
         }
 
-        .timeline-marker {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
+        .commit-badge.peak {
             background: var(--md-sys-color-primary);
-            border: 4px solid var(--md-sys-color-surface);
-            border-radius: 50%;
-            box-shadow: var(--md-sys-elevation-level2);
+            color: var(--md-sys-color-on-primary);
+            animation: pulse 2s infinite;
+        }
+
+        .peak-label {
+            position: absolute;
+            top: 8px;
+            right: 12px;
+            background: var(--md-sys-color-tertiary);
+            color: var(--md-sys-color-on-tertiary);
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.6875rem;
+            font-weight: 600;
+        }
+
+        .month-content {
+            padding: 20px;
+        }
+
+        .milestone-title {
+            color: var(--md-sys-color-on-surface);
+            margin-bottom: 16px;
+        }
+
+        .achievements {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+        }
+
+        .achievement-icon {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .achievement-text {
+            color: var(--md-sys-color-on-surface-variant);
+            font-size: 0.875rem;
+            line-height: 1.4;
         }
 
         /* Tech Stack */
@@ -503,23 +712,55 @@
                 gap: 20px;
             }
 
-            .timeline::before {
-                left: 20px;
+            .development-progress {
+                padding: 20px;
             }
 
-            .timeline-item {
-                margin-bottom: 20px;
+            .progress-header {
+                gap: 16px;
             }
 
-            .timeline-content {
-                margin-left: 50px !important;
-                margin-right: 0 !important;
-                text-align: left !important;
+            .commit-number {
+                font-size: 2.5rem;
+            }
+
+            .simple-chart {
+                padding: 16px;
+            }
+            
+            .chart-bars {
+                height: 160px;
+                padding: 0 8px;
+            }
+            
+            .bar {
+                width: 32px;
+                padding-top: 6px;
+            }
+            
+            .bar-value {
+                font-size: 0.7rem;
+            }
+            
+            .bar-label {
+                font-size: 0.8rem;
+            }
+
+            .monthly-breakdown {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .month-card {
+                margin: 0;
+            }
+
+            .month-header {
                 padding: 16px;
             }
 
-            .timeline-marker {
-                left: 20px;
+            .month-content {
+                padding: 16px;
             }
 
             .display-large { font-size: 2.5rem; }
@@ -628,7 +869,7 @@
                         <ul class="feature-list">
                             <li class="feature-item">
                                 <div class="feature-check">✓</div>
-                                <span class="feature-text body-small">Real-time health monitoring dashboard with Apple Health & Google Fit integration</span>
+                                <span class="feature-text body-small">Real-time health monitoring dashboard with Google Health Connect integration</span>
                             </li>
                             <li class="feature-item">
                                 <div class="feature-check">✓</div>
@@ -684,66 +925,197 @@
         </div>
     </section>
 
-    <!-- Development Timeline -->
+    <!-- Development Journey -->
     <section class="timeline-section section">
         <div class="container">
-            <h2 class="section-title headline-large fade-in">Development Journey</h2>
-            <p class="section-subtitle body-large fade-in">6-month sprint from concept to production-ready applications</p>
-            <div class="timeline">
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date label-large">April 2025</div>
-                        <h4 class="timeline-title title-medium">Foundation & Architecture</h4>
-                        <p class="timeline-description body-small">
-                            Project setup, dependency upgrades, backup systems, media handling infrastructure
-                        </p>
-                        <div class="timeline-stats label-small">47 commits • Both applications initialized</div>
+            <h2 class="section-title headline-large fade-in">6-Month Development Sprint</h2>
+            <p class="section-subtitle body-large fade-in">From concept to production-ready healthcare platform</p>
+            
+            <div class="development-progress fade-in">
+                <div class="progress-header">
+                    <div class="total-commits">
+                        <span class="commit-number headline-large">219</span>
+                        <span class="commit-label body-medium">Total Commits</span>
                     </div>
-                    <div class="timeline-marker"></div>
+                    <div class="progress-visual">
+                        <div class="simple-chart">
+                            <div class="chart-header">
+                                <h3 class="chart-title">Monthly Commit Activity</h3>
+                                <p class="chart-subtitle">Development intensity by month</p>
+                            </div>
+                            
+                            <div class="chart-container">
+                                <div class="chart-bars">
+                                    <div class="bar-item">
+                                        <div class="bar" style="height: 56%;">
+                                            <span class="bar-value">47</span>
+                                        </div>
+                                        <div class="bar-label">Apr</div>
+                                    </div>
+                                    
+                                    <div class="bar-item">
+                                        <div class="bar" style="height: 43%;">
+                                            <span class="bar-value">36</span>
+                                        </div>
+                                        <div class="bar-label">May</div>
+                                    </div>
+                                    
+                                    <div class="bar-item">
+                                        <div class="bar" style="height: 58%;">
+                                            <span class="bar-value">49</span>
+                                        </div>
+                                        <div class="bar-label">Jun</div>
+                                    </div>
+                                    
+                                    <div class="bar-item peak">
+                                        <div class="bar" style="height: 100%;">
+                                            <span class="bar-value">84</span>
+                                            <span class="peak-badge">PEAK</span>
+                                        </div>
+                                        <div class="bar-label">Jul</div>
+                                    </div>
+                                    
+                                    <div class="bar-item">
+                                        <div class="bar" style="height: 45%;">
+                                            <span class="bar-value">38</span>
+                                        </div>
+                                        <div class="bar-label">Aug</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="chart-axis">
+                                    <span class="axis-label">0</span>
+                                    <span class="axis-label">20</span>
+                                    <span class="axis-label">40</span>
+                                    <span class="axis-label">60</span>
+                                    <span class="axis-label">80</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date label-large">May 2025</div>
-                        <h4 class="timeline-title title-medium">Core Features</h4>
-                        <p class="timeline-description body-small">
-                            Call management, location tracking, ZegoCloud integration, deep linking, voice recognition
-                        </p>
-                        <div class="timeline-stats label-small">36 commits • Major feature implementations</div>
+            </div>
+
+            <div class="monthly-breakdown">
+                <div class="month-card fade-in" style="animation-delay: 0.1s">
+                    <div class="month-header">
+                        <div class="month-name title-large">April 2025</div>
+                        <div class="commit-badge">47 commits</div>
                     </div>
-                    <div class="timeline-marker"></div>
+                    <div class="month-content">
+                        <h4 class="milestone-title title-medium">Foundation & Architecture</h4>
+                        <div class="achievements">
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🏗️</span>
+                                <span class="achievement-text">Project setup & architecture design</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">📦</span>
+                                <span class="achievement-text">Dependency management & optimization</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">💾</span>
+                                <span class="achievement-text">Backup systems implementation</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date label-large">June 2025</div>
-                        <h4 class="timeline-title title-medium">Platform Integration</h4>
-                        <p class="timeline-description body-small">
-                            Health Connect integration, authentication systems, group management, subscription framework
-                        </p>
-                        <div class="timeline-stats label-small">49 commits • Cross-platform development</div>
+
+                <div class="month-card fade-in" style="animation-delay: 0.2s">
+                    <div class="month-header">
+                        <div class="month-name title-large">May 2025</div>
+                        <div class="commit-badge">36 commits</div>
                     </div>
-                    <div class="timeline-marker"></div>
+                    <div class="month-content">
+                        <h4 class="milestone-title title-medium">Core Features Development</h4>
+                        <div class="achievements">
+                            <div class="achievement-item">
+                                <span class="achievement-icon">📞</span>
+                                <span class="achievement-text">ZegoCloud call integration</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">📍</span>
+                                <span class="achievement-text">Location tracking & mapping</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🎤</span>
+                                <span class="achievement-text">Voice recognition for emergencies</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date label-large">July 2025</div>
-                        <h4 class="timeline-title title-medium">Advanced Features</h4>
-                        <p class="timeline-description body-small">
-                            Subscription management, OTP verification, enhanced chat, backup systems, UI polish
-                        </p>
-                        <div class="timeline-stats label-small">84 commits • Peak productivity month</div>
+
+                <div class="month-card fade-in" style="animation-delay: 0.3s">
+                    <div class="month-header">
+                        <div class="month-name title-large">June 2025</div>
+                        <div class="commit-badge">49 commits</div>
                     </div>
-                    <div class="timeline-marker"></div>
+                    <div class="month-content">
+                        <h4 class="milestone-title title-medium">Platform Integration</h4>
+                        <div class="achievements">
+                            <div class="achievement-item">
+                                <span class="achievement-icon">❤️</span>
+                                <span class="achievement-text">Google Health ConnectAPI</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🔐</span>
+                                <span class="achievement-text">Authentication & security systems</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">👥</span>
+                                <span class="achievement-text">Group management framework</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="timeline-item fade-in">
-                    <div class="timeline-content">
-                        <div class="timeline-date label-large">August 2025</div>
-                        <h4 class="timeline-title title-medium">Production Ready</h4>
-                        <p class="timeline-description body-small">
-                            WorkManager optimization, AI features, performance tuning, final testing phase
-                        </p>
-                        <div class="timeline-stats label-small">38 commits • Quality assurance focus</div>
+
+                <div class="month-card peak-month fade-in" style="animation-delay: 0.4s">
+                    <div class="month-header">
+                        <div class="month-name title-large">July 2025</div>
+                        <div class="commit-badge peak">84 commits</div>
+                        <div class="peak-label">Peak Productivity</div>
                     </div>
-                    <div class="timeline-marker"></div>
+                    <div class="month-content">
+                        <h4 class="milestone-title title-medium">Advanced Features & Polish</h4>
+                        <div class="achievements">
+                            <div class="achievement-item">
+                                <span class="achievement-icon">💳</span>
+                                <span class="achievement-text">Subscription & billing management</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">📱</span>
+                                <span class="achievement-text">OTP verification & enhanced UX</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">💬</span>
+                                <span class="achievement-text">Advanced chat functionality</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="month-card fade-in" style="animation-delay: 0.5s">
+                    <div class="month-header">
+                        <div class="month-name title-large">August 2025</div>
+                        <div class="commit-badge">38 commits</div>
+                    </div>
+                    <div class="month-content">
+                        <h4 class="milestone-title title-medium">Production Ready</h4>
+                        <div class="achievements">
+                            <div class="achievement-item">
+                                <span class="achievement-icon">⚡</span>
+                                <span class="achievement-text">Performance optimization</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">🤖</span>
+                                <span class="achievement-text">AI features integration</span>
+                            </div>
+                            <div class="achievement-item">
+                                <span class="achievement-icon">✅</span>
+                                <span class="achievement-text">Quality assurance & testing</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -763,8 +1135,6 @@
                 <div class="tech-chip body-medium fade-in">ZegoCloud SDK</div>
                 <div class="tech-chip body-medium fade-in">Google Play Billing</div>
                 <div class="tech-chip body-medium fade-in">Health Connect API</div>
-                <div class="tech-chip body-medium fade-in">Google Fit API</div>
-                <div class="tech-chip body-medium fade-in">Apple Health</div>
                 <div class="tech-chip body-medium fade-in">Google Drive API</div>
                 <div class="tech-chip body-medium fade-in">OneSignal</div>
                 <div class="tech-chip body-medium fade-in">Location Services</div>
