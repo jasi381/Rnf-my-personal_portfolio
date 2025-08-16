@@ -1,42 +1,839 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Test Page</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f9;
-      color: #333;
-      text-align: center;
-      margin: 0;
-      padding: 50px;
-    }
-    h1 {
-      color: #2c3e50;
-    }
-    p {
-      font-size: 18px;
-    }
-    button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background: #2ecc71;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      color: white;
-    }
-    button:hover {
-      background: #27ae60;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jasmeet Singh - Android Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Material 3 Expressive Colors */
+            --md-sys-color-primary: #6750A4;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #EADDFF;
+            --md-sys-color-on-primary-container: #21005D;
+            --md-sys-color-secondary: #625B71;
+            --md-sys-color-on-secondary: #FFFFFF;
+            --md-sys-color-secondary-container: #E8DEF8;
+            --md-sys-color-on-secondary-container: #1D192B;
+            --md-sys-color-tertiary: #7D5260;
+            --md-sys-color-on-tertiary: #FFFFFF;
+            --md-sys-color-tertiary-container: #FFD8E4;
+            --md-sys-color-on-tertiary-container: #31111D;
+            --md-sys-color-error: #BA1A1A;
+            --md-sys-color-on-error: #FFFFFF;
+            --md-sys-color-error-container: #FFDAD6;
+            --md-sys-color-on-error-container: #410002;
+            --md-sys-color-background: #FFFBFE;
+            --md-sys-color-on-background: #1C1B1F;
+            --md-sys-color-surface: #FFFBFE;
+            --md-sys-color-on-surface: #1C1B1F;
+            --md-sys-color-surface-variant: #E7E0EC;
+            --md-sys-color-on-surface-variant: #49454F;
+            --md-sys-color-outline: #79747E;
+            --md-sys-color-outline-variant: #CAC4D0;
+            --md-sys-color-shadow: #000000;
+            --md-sys-color-scrim: #000000;
+            --md-sys-color-inverse-surface: #313033;
+            --md-sys-color-inverse-on-surface: #F4EFF4;
+            --md-sys-color-inverse-primary: #D0BCFF;
+            --md-sys-color-surface-tint: #6750A4;
+            
+            /* Material 3 Elevation */
+            --md-sys-elevation-level0: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+            --md-sys-elevation-level1: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+            --md-sys-elevation-level2: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+            --md-sys-elevation-level3: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12);
+            --md-sys-elevation-level4: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+            --md-sys-elevation-level5: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--md-sys-color-on-background);
+            background: var(--md-sys-color-background);
+            overflow-x: hidden;
+        }
+
+        /* Typography - Material 3 */
+        .display-large { font-size: 3.5rem; font-weight: 400; line-height: 1.12; }
+        .display-medium { font-size: 2.8rem; font-weight: 400; line-height: 1.16; }
+        .display-small { font-size: 2.25rem; font-weight: 400; line-height: 1.22; }
+        .headline-large { font-size: 2rem; font-weight: 400; line-height: 1.25; }
+        .headline-medium { font-size: 1.75rem; font-weight: 400; line-height: 1.29; }
+        .headline-small { font-size: 1.5rem; font-weight: 400; line-height: 1.33; }
+        .title-large { font-size: 1.375rem; font-weight: 400; line-height: 1.27; }
+        .title-medium { font-size: 1rem; font-weight: 500; line-height: 1.5; }
+        .title-small { font-size: 0.875rem; font-weight: 500; line-height: 1.43; }
+        .body-large { font-size: 1rem; font-weight: 400; line-height: 1.5; }
+        .body-medium { font-size: 0.875rem; font-weight: 400; line-height: 1.43; }
+        .body-small { font-size: 0.75rem; font-weight: 400; line-height: 1.33; }
+        .label-large { font-size: 0.875rem; font-weight: 500; line-height: 1.43; }
+        .label-medium { font-size: 0.75rem; font-weight: 500; line-height: 1.33; }
+        .label-small { font-size: 0.6875rem; font-weight: 500; line-height: 1.45; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* Hero Section - Minimal whitespace */
+        .hero {
+            background: linear-gradient(135deg, var(--md-sys-color-primary-container) 0%, var(--md-sys-color-secondary-container) 100%);
+            padding: 32px 0 48px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='%23CAC4D0'%3e%3cpath d='m0 .5 32 32M32 .5 0 32'/%3e%3c/svg%3e") center/32px 32px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border-radius: 20px;
+            margin-bottom: 16px;
+            box-shadow: var(--md-sys-elevation-level2);
+        }
+
+        .hero-badge::before {
+            content: '●';
+            color: var(--md-sys-color-tertiary);
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero h1 {
+            margin-bottom: 16px;
+            color: var(--md-sys-color-on-primary-container);
+        }
+
+        .hero-subtitle {
+            color: var(--md-sys-color-on-primary-container);
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .metric-card {
+            background: var(--md-sys-color-surface);
+            padding: 16px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--md-sys-elevation-level2);
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .metric-value {
+            color: var(--md-sys-color-primary);
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .metric-label {
+            color: var(--md-sys-color-on-surface-variant);
+            font-weight: 500;
+        }
+
+        /* Sections */
+        .section {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 32px;
+            color: var(--md-sys-color-on-background);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Impact Cards */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .impact-card {
+            background: var(--md-sys-color-surface);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: var(--md-sys-elevation-level2);
+            border: 1px solid var(--md-sys-color-outline-variant);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .impact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--md-sys-color-primary) 0%, var(--md-sys-color-tertiary) 100%);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--md-sys-elevation-level4);
+        }
+
+        .impact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .impact-title {
+            color: var(--md-sys-color-on-surface);
+            margin-bottom: 8px;
+        }
+
+        .impact-description {
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        /* Product Showcase */
+        .product-section {
+            background: var(--md-sys-color-surface-variant);
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 24px;
+        }
+
+        .product-card {
+            background: var(--md-sys-color-surface);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--md-sys-elevation-level3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--md-sys-elevation-level5);
+        }
+
+        .product-header {
+            padding: 24px;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            position: relative;
+        }
+
+        .product-header.secondary {
+            background: var(--md-sys-color-tertiary);
+            color: var(--md-sys-color-on-tertiary);
+        }
+
+        .product-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+
+        .product-title {
+            margin-bottom: 8px;
+        }
+
+        .product-subtitle {
+            opacity: 0.9;
+        }
+
+        .product-content {
+            padding: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .feature-check {
+            width: 20px;
+            height: 20px;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .feature-text {
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        /* Timeline */
+        .timeline-section {
+            background: var(--md-sys-color-background);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--md-sys-color-primary) 0%, var(--md-sys-color-tertiary) 100%);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 40px;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 40px;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: var(--md-sys-color-surface);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: var(--md-sys-elevation-level2);
+            border: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .timeline-date {
+            color: var(--md-sys-color-primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-title {
+            color: var(--md-sys-color-on-surface);
+            margin-bottom: 8px;
+        }
+
+        .timeline-description {
+            color: var(--md-sys-color-on-surface-variant);
+            margin-bottom: 8px;
+        }
+
+        .timeline-stats {
+            color: var(--md-sys-color-outline);
+            font-weight: 500;
+        }
+
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--md-sys-color-primary);
+            border: 4px solid var(--md-sys-color-surface);
+            border-radius: 50%;
+            box-shadow: var(--md-sys-elevation-level2);
+        }
+
+        /* Tech Stack */
+        .tech-section {
+            background: var(--md-sys-color-surface-variant);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .tech-chip {
+            background: var(--md-sys-color-surface);
+            color: var(--md-sys-color-on-surface);
+            padding: 8px 16px;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 500;
+            border: 1px solid var(--md-sys-color-outline-variant);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tech-chip:hover {
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--md-sys-elevation-level2);
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            text-align: center;
+        }
+
+        .cta-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 24px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .cta-stat {
+            text-align: center;
+        }
+
+        .cta-stat-value {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .cta-stat-label {
+            opacity: 0.8;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--md-sys-color-primary);
+            z-index: 1000;
+            transition: width 0.1s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 24px 0 32px 0;
+            }
+
+            .section {
+                padding: 32px 0;
+            }
+
+            .product-showcase {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                margin-bottom: 20px;
+            }
+
+            .timeline-content {
+                margin-left: 50px !important;
+                margin-right: 0 !important;
+                text-align: left !important;
+                padding: 16px;
+            }
+
+            .timeline-marker {
+                left: 20px;
+            }
+
+            .display-large { font-size: 2.5rem; }
+            .display-medium { font-size: 2rem; }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <h1>Hello, GitHub Pages! 🎉</h1>
-  <p>This is a simple single-page HTML site hosted on GitHub Pages.</p>
-  <button onclick="alert('You clicked me!')">Click Me</button>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge label-large fade-in">
+                    SDE-L1 • Android Developer
+                </div>
+                <h1 class="display-large fade-in">
+                    Built Complete Healthcare Platform in 6 Months
+                </h1>
+                <p class="body-large hero-subtitle fade-in">
+                    Delivered two production-ready mobile applications serving caregivers and care receivers, 
+                    with advanced health monitoring, emergency response, and real-time communication features.
+                </p>
+                <div class="hero-metrics fade-in">
+                    <div class="metric-card">
+                        <div class="metric-value headline-medium">219</div>
+                        <div class="metric-label label-medium">Commits</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value headline-medium">2</div>
+                        <div class="metric-label label-medium">Apps Built</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value headline-medium">6</div>
+                        <div class="metric-label label-medium">Months</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value headline-medium">100%</div>
+                        <div class="metric-label label-medium">Complete</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="impact-grid">
+                <div class="impact-card fade-in">
+                    <div class="impact-icon">🚀</div>
+                    <h3 class="impact-title title-large">Rapid Development</h3>
+                    <p class="impact-description body-medium">
+                        Delivered production-ready healthcare applications from concept to completion in 6 months, 
+                        maintaining high code quality with consistent commit velocity.
+                    </p>
+                </div>
+                <div class="impact-card fade-in">
+                    <div class="impact-icon">🏥</div>
+                    <h3 class="impact-title title-large">Healthcare Innovation</h3>
+                    <p class="impact-description body-medium">
+                        Built comprehensive caregiving solution with emergency response, health monitoring, 
+                        and family communication features that could impact thousands of users.
+                    </p>
+                </div>
+                <div class="impact-card fade-in">
+                    <div class="impact-icon">⚡</div>
+                    <h3 class="impact-title title-large">Technical Excellence</h3>
+                    <p class="impact-description body-medium">
+                        Implemented complex integrations including real-time communication, health APIs, 
+                        payment systems, and cloud services with robust architecture.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product-section section">
+        <div class="container">
+            <h2 class="section-title headline-large fade-in">Products Built</h2>
+            <p class="section-subtitle body-large fade-in">
+                Two interconnected mobile applications serving different user roles in the caregiving ecosystem
+            </p>
+            <div class="product-showcase">
+                <div class="product-card fade-in">
+                    <div class="product-header">
+                        <div class="product-badge label-small">For Caregivers</div>
+                        <h3 class="product-title headline-small">KinectedCare Pro</h3>
+                        <p class="product-subtitle body-medium">Healthcare provider and family caregiver platform</p>
+                    </div>
+                    <div class="product-content">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">Real-time health monitoring dashboard with Apple Health & Google Fit integration</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">Multi-group management for overseeing multiple care recipients</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">Emergency response coordination with instant notifications</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">Subscription billing management with Google Play integration</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">Advanced analytics and health trend reporting</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="product-card fade-in">
+                    <div class="product-header secondary">
+                        <div class="product-badge label-small">For Care Recipients</div>
+                        <h3 class="product-title headline-small">KinectedCare</h3>
+                        <p class="product-subtitle body-medium">Simple, accessible app for seniors and care recipients</p>
+                    </div>
+                    <div class="product-content">
+                        <ul class="feature-list">
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">One-touch emergency assistance with voice activation ("Help me")</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">Automatic emergency calling when no response in 60 seconds</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">Family communication hub with media sharing</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">Location sharing for safety and peace of mind</span>
+                            </li>
+                            <li class="feature-item">
+                                <div class="feature-check">✓</div>
+                                <span class="feature-text body-small">Simplified UI designed for accessibility and ease of use</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Timeline -->
+    <section class="timeline-section section">
+        <div class="container">
+            <h2 class="section-title headline-large fade-in">Development Journey</h2>
+            <p class="section-subtitle body-large fade-in">6-month sprint from concept to production-ready applications</p>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date label-large">April 2025</div>
+                        <h4 class="timeline-title title-medium">Foundation & Architecture</h4>
+                        <p class="timeline-description body-small">
+                            Project setup, dependency upgrades, backup systems, media handling infrastructure
+                        </p>
+                        <div class="timeline-stats label-small">47 commits • Both applications initialized</div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date label-large">May 2025</div>
+                        <h4 class="timeline-title title-medium">Core Features</h4>
+                        <p class="timeline-description body-small">
+                            Call management, location tracking, ZegoCloud integration, deep linking, voice recognition
+                        </p>
+                        <div class="timeline-stats label-small">36 commits • Major feature implementations</div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date label-large">June 2025</div>
+                        <h4 class="timeline-title title-medium">Platform Integration</h4>
+                        <p class="timeline-description body-small">
+                            Health Connect integration, authentication systems, group management, subscription framework
+                        </p>
+                        <div class="timeline-stats label-small">49 commits • Cross-platform development</div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date label-large">July 2025</div>
+                        <h4 class="timeline-title title-medium">Advanced Features</h4>
+                        <p class="timeline-description body-small">
+                            Subscription management, OTP verification, enhanced chat, backup systems, UI polish
+                        </p>
+                        <div class="timeline-stats label-small">84 commits • Peak productivity month</div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-content">
+                        <div class="timeline-date label-large">August 2025</div>
+                        <h4 class="timeline-title title-medium">Production Ready</h4>
+                        <p class="timeline-description body-small">
+                            WorkManager optimization, AI features, performance tuning, final testing phase
+                        </p>
+                        <div class="timeline-stats label-small">38 commits • Quality assurance focus</div>
+                    </div>
+                    <div class="timeline-marker"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section class="tech-section section">
+        <div class="container">
+            <h2 class="section-title headline-large fade-in">Technology Stack</h2>
+            <p class="section-subtitle body-large fade-in">Modern Android development with complex third-party integrations</p>
+            <div class="tech-grid">
+                <div class="tech-chip body-medium fade-in">Kotlin</div>
+                <div class="tech-chip body-medium fade-in">Jetpack Compose</div>
+                <div class="tech-chip body-medium fade-in">Room Database</div>
+                <div class="tech-chip body-medium fade-in">WorkManager</div>
+                <div class="tech-chip body-medium fade-in">Socket.IO</div>
+                <div class="tech-chip body-medium fade-in">ZegoCloud SDK</div>
+                <div class="tech-chip body-medium fade-in">Google Play Billing</div>
+                <div class="tech-chip body-medium fade-in">Health Connect API</div>
+                <div class="tech-chip body-medium fade-in">Google Fit API</div>
+                <div class="tech-chip body-medium fade-in">Apple Health</div>
+                <div class="tech-chip body-medium fade-in">Google Drive API</div>
+                <div class="tech-chip body-medium fade-in">OneSignal</div>
+                <div class="tech-chip body-medium fade-in">Location Services</div>
+                <div class="tech-chip body-medium fade-in">Voice Recognition</div>
+                <div class="tech-chip body-medium fade-in">MVVM Architecture</div>
+                <div class="tech-chip body-medium fade-in">Coroutines & Flow</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section section">
+        <div class="container">
+            <div class="fade-in">
+                <h2 class="headline-large" style="margin-bottom: 16px;">Jasmeet Singh</h2>
+                <p class="body-large" style="margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    SDE-L1 Android Developer who delivered a complete healthcare platform, 
+                    demonstrating ability to build complex, user-focused applications that solve real-world problems.
+                </p>
+                <div class="cta-stats">
+                    <div class="cta-stat">
+                        <span class="cta-stat-value headline-medium">219+</span>
+                        <span class="cta-stat-label body-medium">Total Commits</span>
+                    </div>
+                    <div class="cta-stat">
+                        <span class="cta-stat-value headline-medium">6</span>
+                        <span class="cta-stat-label body-medium">Months</span>
+                    </div>
+                    <div class="cta-stat">
+                        <span class="cta-stat-value headline-medium">2</span>
+                        <span class="cta-stat-label body-medium">Complete Apps</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Progress Bar
+        function updateProgress() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        }
+
+        window.addEventListener('scroll', updateProgress);
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
 </body>
 </html>
